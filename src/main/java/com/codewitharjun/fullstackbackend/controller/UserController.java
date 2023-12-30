@@ -9,20 +9,20 @@ import java.util.List;
 
 /* Created by Arjun Gautam */
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
     @PostMapping("/user")
-    User newUser(@RequestBody User newUser) {
+    public User newUser(@RequestBody User newUser) {
         User savedUser = userRepository.save(newUser);
         return savedUser;
     }
 
     @GetMapping("/notes")
-    List<User> getAllNotes() {
+    public List<User> getAllNotes() {
         return userRepository.findAll();
     }
 }
